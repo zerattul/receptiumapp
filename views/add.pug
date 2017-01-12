@@ -1,0 +1,29 @@
+extends layout.pug
+
+block content
+	div.index-cont
+		.barra-top
+			.centrar
+				h2.user-log #{user}
+				a.btn-close.show(href="/logout") Cerrar Sesión
+		.invt-wrap
+			.centrar-dos
+				div.invt-to
+					h2.top__h1 Agregar Invitados
+					article.item
+						form.form(method="post", action="/teams")
+							fieldset
+								div
+									input.i-form(type="text", name="name", placeholder="nombre", required)
+								div
+									input.i-form(type="text", name="last", placeholder="apelliido", required)
+								div
+									input.i-form(type="text", name="table", placeholder="mesa", required, onkeypress="return valida(event)")
+								div
+									input.i-form(type="text", name="entr", placeholder="entradas", required, onkeypress="return valida(event)")
+
+								div.btns
+									div.btn-cont
+										input.btn.add(type="submit", value="Agregar")
+									div.btn-cont
+										a.btn.show(href="/") Regresar

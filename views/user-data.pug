@@ -1,0 +1,46 @@
+extends layout.pug
+
+block content
+	div.index-cont
+		.barra-top
+			.centrar
+				h2.user-log #{user}
+				h2.date #{user.date}
+				a.btn-close.show(href="/logout") Cerrar Sesión
+		.invt-wrap
+			.centrar-dos
+				div.invt-top
+					h2.top__h1 Llena los datos con la información correspondiente
+					div.btnsAdd-Srch
+						input.btn.i-width(type="text", name="search" placeholder="Buscar", required)
+						a.btn.i-width.show(href="/agregar") Agregar
+
+				div.invt-form
+					if(data.length)
+						table.table
+							tr
+								th Nombre
+								th Apellido
+								th Mesa
+								th Entradas
+								th
+								th
+							each contacto in data
+								tr
+									td #{contacto.name}
+									td #{contacto.last}
+									td #{contacto.table}
+									td #{contacto.entr}
+									td
+										a.btn(href="/editar/" + contacto._id) Editar
+									td
+										form(method="post", action="/eliminar/" + contacto._id)
+											input(type="button", value="Eliminar", onclick="eliminar(this)").btn
+											input(type="hidden", name="_method", value="DELETE")
+						script.
+							function eliminar(input) {
+								var deleteOk = confirm('¿Estás seguro de eliminar este registro?');
+								return (deleteOk) ? input.parentNode.submit() : false;
+							}
+					else
+						div.error No tienes contactos que mostrar

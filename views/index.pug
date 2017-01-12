@@ -1,0 +1,45 @@
+extends layout.pug
+
+block content
+	//- TopBar
+	section.m-section.topBar
+		.m-center
+			.topBar-cont
+				span.mx-cont__user #{user}
+				a(href="/logout").topBar-cont__logout Salir
+
+	//- Create Event
+	section.m-section
+		.m-center
+			.createEvent
+				h1.createEvent__title Administra Todos tus Eventos
+				.createEvent-cont
+					.createEvent-cont-btns
+						a(href="#popup").mx__createBtn Crear Evento
+					.createEvent-cont-wrapper
+						each event in data
+							.createEvent-cont-btns
+								a(href="/events/" + event._id + "/guests").mx-createEvente__event.createEvent-cont-btns__btn #{event.name} / #{event.date}
+								a(href="/events/"+ event._id + "/guests").mx-createEvente__event.createEvent-cont-btns__btn Lista de Invitados
+								.m-crud
+									a.btn(href="/editar/" + event._id).m-crud__edit.icon-pencil
+									form(method="post", action="/events/" + event._id)
+										input(type="button", value="X", onclick="eliminar(this)").m-crud__delete.icon-x
+										input(type="hidden", name="_method", value="DELETE")
+
+										script.
+											function eliminar(input) {
+												var deleteOk = confirm('¿Estás seguro de eliminar este registro?');
+												return (deleteOk) ? input.parentNode.submit() : false;
+											}
+
+	section#popup.m-modal
+		.m-modal-popup
+			h2 Crear Evento
+			a(href="#").m-modal-popup__close &times;
+			form(method="post" action="/events").m-modal-popup-content
+				.m-modal-popup-content__label Nombre:
+				input(type="text" name="name" placeholder="Escribe el nombre").mx-modal-popup-content__input
+				.m-modal-popup-content__label Fecha:
+				input(type="date" name="date").mx-modal-popup-content__input
+				button.mx__createEvent Crear

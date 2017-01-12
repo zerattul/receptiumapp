@@ -1,0 +1,51 @@
+extends layout.pug
+
+block content
+  div.contGeneral
+    //- Contenido Top
+    div.barraCont
+      div.centrar
+        div.barraCont-buscador
+          input(type="text" placeholder="Buscar Invitado").barraCont--input
+
+        div.barraCont-texto
+          p.barraCont--invitados #Invitados
+          p.barraCont--cantidad 1/120
+
+    //- Contenido Central
+    div.centralCont
+      div.centralCont-wrapper
+        div.centralCont-column
+          h2.centralCont--titulo INVITADOS
+          div.centralCont--list
+            each contacto in data
+              div.centralCont-invitado(onclick="prueba")
+                div.centralCont-contNombre
+                  div.centralCont-nombres
+                    div.centralCont-nombre
+                      h3.centrarCont--invtNombre #{contacto.name}
+                    div.coentralCont-last
+                      h3.centrarCont--invtNombre #{contacto.last}
+                  div.central-cont-mesa
+                    p.central-cont__text MESA
+                    p.central-cont--mesa #{contacto.table}
+                  div.central-cont-mesa
+                    p.central-cont__text INVI
+                    p.central-cont--mesa #{contacto.entr}
+
+
+        div.centralCont-column(ng-controller="StoreController as store")
+          h2.centralCont--titulo INFORMACIÓN DE LA MESA
+          p que onda con esto {{fdaaaaaa}} mama
+          div.centralCont-invitado
+            div
+              each contacto in data
+                p.centralCont-invitado__text #{contacto.name}
+
+
+    div.CentralImg
+        img(src="img/mapa-mini.png", alt="")
+
+    div.ligthbox
+      div.centrarImg
+        img(src="img/mapa.png", alt="")
