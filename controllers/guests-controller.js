@@ -40,10 +40,8 @@ save(req, res, next) {
   let guest = req.body;
   guest.event = req.params.event;
 
-  console.log(event);
-
   return (req.session.username)
-    ? ev.save( guest, () => res.redirect('/events') )
+    ? gm.save( guest.event, () => res.redirect('/events') )
     : errors.http401(req, res, next);
 }
 //

@@ -28,112 +28,26 @@ block content
                   a(href="#popup").main-data-table-thead__add Agregar
 
               tbody.main-data-table-tbody
-                tr
-                  td.nombre
-                    p.mx__nombre Salvador Carreon Briseño
-                  td.col
-                    p.mx__invitados 3
-                  td.col
-                    p.mx__mesa 12
-                  td.colbtn
-                    .colbtn-crud
-                      button.colbtn-crud__edit.icon-pencil
-                      button.colbtn-crud__delete.icon-x
-                tr
-                  td.nombre
-                    p.mx__nombre Cesar Gaytan Silva
-                  td.col
-                    p.mx__invitados 2
-                  td.col
-                    p.mx__mesa 1
-                  td.colbtn
-                    .colbtn-crud
-                      button.colbtn-crud__edit.icon-pencil
-                      button.colbtn-crud__delete.icon-x
-                tr
-                  td.nombre
-                    p.mx__nombre Maria Karina Pinto Morales
-                  td.col
-                    p.mx__invitados 3
-                  td.col
-                    p.mx__mesa 12
-                  td.colbtn
-                    .colbtn-crud
-                      button.colbtn-crud__edit.icon-pencil
-                      button.colbtn-crud__delete.icon-x
-                tr
-                  td.nombre
-                    p.mx__nombre Salvador Carreon Briseño
-                  td.col
-                    p.mx__invitados 3
-                  td.col
-                    p.mx__mesa 12
-                  td.colbtn
-                    .colbtn-crud
-                      button.colbtn-crud__edit.icon-pencil
-                      button.colbtn-crud__delete.icon-x
-                tr
-                  td.nombre
-                    p.mx__nombre Cesar Gaytan Silva
-                  td.col
-                    p.mx__invitados 2
-                  td.col
-                    p.mx__mesa 1
-                  td.colbtn
-                    .colbtn-crud
-                      button.colbtn-crud__edit.icon-pencil
-                      button.colbtn-crud__delete.icon-x
-                tr
-                  td.nombre
-                    p.mx__nombre Maria Karina Pinto Morales
-                  td.col
-                    p.mx__invitados 3
-                  td.col
-                    p.mx__mesa 12
-                  td.colbtn
-                    .colbtn-crud
-                      button.colbtn-crud__edit.icon-pencil
-                      button.colbtn-crud__delete.icon-x
-                tr
-                  td.nombre
-                    p.mx__nombre Salvador Carreon Briseño
-                  td.col
-                    p.mx__invitados 3
-                  td.col
-                    p.mx__mesa 12
-                  td.colbtn
-                    .colbtn-crud
-                      button.colbtn-crud__edit.icon-pencil
-                      button.colbtn-crud__delete.icon-x
-                tr
-                  td.nombre
-                    p.mx__nombre Cesar Gaytan Silva
-                  td.col
-                    p.mx__invitados 2
-                  td.col
-                    p.mx__mesa 1
-                  td.colbtn
-                    .colbtn-crud
-                      button.colbtn-crud__edit.icon-pencil
-                      button.colbtn-crud__delete.icon-x
-                tr
-                  td.nombre
-                    p.mx__nombre Maria Karina Pinto Morales
-                  td.col
-                    p.mx__invitados 3
-                  td.col
-                    p.mx__mesa 12
-                  td.colbtn
-                    .colbtn-crud
-                      button.colbtn-crud__edit.icon-pencil
-                      button.colbtn-crud__delete.icon-x
+                each guest in data
+                  tr
+                    td.nombre
+                      p.mx__nombre Salvador Carreon Briseño
+                    td.col
+                      p.mx__invitados 3
+                    td.col
+                      p.mx__mesa 12
+                    td.colbtn
+                      .colbtn-crud
+                        button.colbtn-crud__edit.icon-pencil
+                        button.colbtn-crud__delete.icon-x
+
 
   //- Modal
   section#popup.m-modal
     .m-modal-popup
-      h2 Agrgegar Invitado
+      h2 Agregar Invitado
       a(href="#").m-modal-popup__close &times;
-      .m-modal-popup-content
+      form(method="post" action="/events/:event/guests").m-modal-popup-content
         .m-modal-popup-content__label Nombre:
         input(type="text" name="name" placeholder="Escribe el nombre").mx-modal-popup-content__input
         .m-modal-popup-content__label Mesa:
@@ -141,5 +55,5 @@ block content
         .m-modal-popup-content__label Correo:
         input(type="email" name="email" placeholder="Escribe el email").mx-modal-popup-content__input
         .m-modal-popup-content__label Teléfono:
-        input(type="number" name="phone" min="1" max="10" placeholder="Escribe el telefono").mx-modal-popup-content__input
+        input(type="number" name="phone" min="1" max="2" placeholder="Escribe el telefono").mx-modal-popup-content__input
         button.mx__createEvent Agregar
