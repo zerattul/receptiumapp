@@ -31,29 +31,36 @@ block content
                 each guest in data
                   tr
                     td.nombre
-                      p.mx__nombre Salvador Carreon Briseño
+                      p.mx__nombre #{guest.name}
                     td.col
-                      p.mx__invitados 3
+                      p.mx__invitados #{guest.table}
                     td.col
-                      p.mx__mesa 12
+                      p.mx__mesa #{guest.email}
                     td.colbtn
                       .colbtn-crud
-                        button.colbtn-crud__edit.icon-pencil
-                        button.colbtn-crud__delete.icon-x
+                        a.btn(href="/events/" + event + '/guest/editar/' + guest.id).m-crud__edit.icon-pencil
+                        form(method="post", action="/events/" + event + "/guests/" + event._id)
+                          input(type="button", value="X", onclick="eliminar(this)").m-crud__delete.icon-x
+                          input(type="hidden", name="_method", value="DELETE")
 
+                          script.
+                            function eliminar(input) {
+                              var deleteOk = confirm('¿Estás seguro de eliminar este registro?');
+                              return (deleteOk) ? input.parentNode.submit() : false;
+                            }
 
   //- Modal
   section#popup.m-modal
     .m-modal-popup
       h2 Agregar Invitado
       a(href="#").m-modal-popup__close &times;
-      form(method="post" action="/events/:event/guests").m-modal-popup-content
+      form(method="post" action="/events/"+event+"/guests").m-modal-popup-content
         .m-modal-popup-content__label Nombre:
         input(type="text" name="name" placeholder="Escribe el nombre").mx-modal-popup-content__input
         .m-modal-popup-content__label Mesa:
-        input(type="number" name="table" min="1" max="2" placeholder="Selecciona la Mesa").mx-modal-popup-content__input
+        input(type="number" name="table" placeholder="Selecciona la Mesa").mx-modal-popup-content__input
         .m-modal-popup-content__label Correo:
         input(type="email" name="email" placeholder="Escribe el email").mx-modal-popup-content__input
         .m-modal-popup-content__label Teléfono:
-        input(type="number" name="phone" min="1" max="2" placeholder="Escribe el telefono").mx-modal-popup-content__input
+        input(type="number" name="phone" placeholder="Escribe el telefono").mx-modal-popup-content__input
         button.mx__createEvent Agregar

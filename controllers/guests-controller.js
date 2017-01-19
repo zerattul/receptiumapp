@@ -11,56 +11,61 @@ getAll(req, res, next) {
     ? gm.getAll(event, (docs) => {
       res.render('guest-home', {
         user :req.session.username,
-        data : docs
+        data : docs,
+        event : event
       });
     })
     : errors.http401(req, res, next)
 }
 
-// getOne(req, res, next) {
-//   console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-//   let _id = req.params._id;
-//   console.log('documentos', _id);
-//
-//   return (req.session.username)
-//     ? ev.getOne(_id, (docs) => {
-//       console.log('documentos', docs);
-//
-//       res.render('edit', {
-//         title : 'Editar Contacto',
-//         user : req.session.username,
-//         data : docs
-//       });
-//     })
-//     : errors.http401(req, res, next);
-// }
-//
+getOne(req, res, next) {
+  console.log('Editar uno')
+  let _id = req.params._id;
+  console.log('documentos', _id);
+
+  return (req.session.username)
+    ? ev.getOne(_id, (docs) => {
+      console.log('documentos', docs);
+
+      res.render('guest-edit', {
+        title : 'Editar Contacto',
+        user : req.session.username,
+        data : docs
+      });
+    })
+    : errors.http401(req, res, next);
+}
+
 save(req, res, next) {
-  console.log("save");
+  console.log("save guest");
   let guest = req.body;
   guest.event = req.params.event;
 
   return (req.session.username)
-    ? gm.save( guest.event, () => res.redirect('/events') )
+    ? gm.save( guest, () => res.redirect('/events/' + guest.event + '/guests') )
     : errors.http401(req, res, next);
 }
-//
-// update(req, res, next) {
-//   console.log("update");
-//   console.log(req.body);
-//   return (req.session.username)
-//     ? ev.update( req.body, () => res.redirect('/events') )
-//     : errors.http401(req, res, next);
-// }
-//
-// delete(req, res, next) {
-//   let event = req.params._id;
-//   console.log(event);
-//
-//   return (req.session.username)
-//     ? ev.delete( event, () => res.redirect('/events') )
-//     : errors.http401(req, res, next);
-// }
+
+update(req, res, next) {
+  console.log("update");
+  console.log(req.body);
+  let guest = req.body;
+  guest.event = req.params.event;
+
+  return (req.session.username)
+    ? ev.update( guest, () => res.redirect('/events/' + guest.event + '/guests') )
+    : errors.http401(req, res, next);
+}
+
+  delete(req, res, next) {
+    console.log("guest borrado");
+    let guest = req.body;
+    guest.event = req.params.event;
+
+    return (req.session.username)
+      ? gm.delete( guest, () => res.redirect('/events/' + guest.event + '/guests') )
+      : errors.http401(req, res, next);
+  }
 }
 
 module.exports = GuestController;

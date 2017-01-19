@@ -31,8 +31,8 @@ class GuestModel {
 		});
 	}
 
-	delete(_id, cb) {
-		conn.remove({_id : _id}, (err) => {
+	delete(event, cb) {
+		conn.remove({event : event}, (err) => {
 			if(err) throw err;
 			cb();
 		});

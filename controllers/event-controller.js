@@ -58,7 +58,7 @@ update(req, res, next) {
 
 delete(req, res, next) {
   let event = req.params._id;
-  console.log(event);
+  console.log("event borrado");
 
   return (req.session.username)
     ? ev.delete( event, () => res.redirect('/events') )

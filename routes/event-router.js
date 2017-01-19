@@ -16,7 +16,9 @@ router
 
 	.get('/events/:event/guests', gm.getAll)
 	.post('/events/:event/guests', gm.save)
-	.get('/events/:event/guests/:guest', gm.getAll)
+	.get('/events/:event/guests/editar/:_id', gm.getOne)
+//	.put('/events/:event/actualizar/:_id', gm.update)
+	.delete('/events/:event/guests/:_id', gm.delete)
 
 
 

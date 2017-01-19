@@ -1,0 +1,22 @@
+extends layout.pug
+
+block content
+	//- TopBar
+	section.m-section.topBar
+		.m-center
+			.topBar-cont
+				span.mx-cont__user #{user}
+				a(href="/logout").topBar-cont__logout Salir
+
+	section.m-section
+		.m-center
+			.createEvent
+				h1.createEvent__title Editar Invitado
+				form(method="post" action="/actualizar/").m-modal-popup-content
+					input(type="hidden", name="_method", value="PUT")
+					input(type="hidden", name="_id")
+					.m-modal-popup-content__label Nombre:
+					input(type="text" name="name").mx-modal-popup-content__input
+					.m-modal-popup-content__label Fecha:
+					input(type="date" name="date").mx-modal-popup-content__input
+					button.mx__createEvent guardar

@@ -25,7 +25,7 @@ block content
 									a.btn(href="/editar/" + event._id).m-crud__edit.icon-pencil
 									form(method="post", action="/events/" + event._id)
 										input(type="button", value="X", onclick="eliminar(this)").m-crud__delete.icon-x
-										input(type="hidden", name="_method", value="DELETE")
+										input(type="hidden", name="_method", value="delete")
 
 										script.
 											function eliminar(input) {
