@@ -24,7 +24,7 @@ getOne(req, res, next) {
   console.log('documentos', _id);
 
   return (req.session.username)
-    ? ev.getOne(_id, (docs) => {
+    ? gm.getOne(_id, (docs) => {
       console.log('documentos', docs);
 
       res.render('guest-edit', {
@@ -53,17 +53,19 @@ update(req, res, next) {
   guest.event = req.params.event;
 
   return (req.session.username)
-    ? ev.update( guest, () => res.redirect('/events/' + guest.event + '/guests') )
+    ? gm.update( guest, () => res.redirect('/events/' + event + '/guests') )
     : errors.http401(req, res, next);
 }
 
-  delete(req, res, next) {
-    console.log("guest borrado");
-    let guest = req.body;
-    guest.event = req.params.event;
+  remove(req, res, next) {
+    console.log("guest borrado :::::::::::::::::::s");
+    let event = req.params.event,
+        guest = req.params._id;
+
+    console.log(guest);
 
     return (req.session.username)
-      ? gm.delete( guest, () => res.redirect('/events/' + guest.event + '/guests') )
+      ? gm.remove( guest, () => res.redirect('/events/' + event + '/guests') )
       : errors.http401(req, res, next);
   }
 }

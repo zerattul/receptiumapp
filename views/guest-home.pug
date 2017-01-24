@@ -38,8 +38,8 @@ block content
                       p.mx__mesa #{guest.email}
                     td.colbtn
                       .colbtn-crud
-                        a.btn(href="/events/" + event + '/guest/editar/' + guest.id).m-crud__edit.icon-pencil
-                        form(method="post", action="/events/" + event + "/guests/" + event._id)
+                        a.btn(href="/events/" + event + '/guests/' + guest._id + '/editar').m-crud__edit.icon-pencil
+                        form(method="post", action="/events/" + event + "/guests/" + guest._id)
                           input(type="button", value="X", onclick="eliminar(this)").m-crud__delete.icon-x
                           input(type="hidden", name="_method", value="DELETE")
 
