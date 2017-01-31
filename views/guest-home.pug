@@ -51,7 +51,7 @@ block content
                               var deleteOk = confirm('¿Estás seguro de eliminar este registro?');
                               return (deleteOk) ? input.parentNode.submit() : false;
                             }
-          a(href="#").mx__createBtn Ver Evento.
+          a(href="/events/" + event + '/guests/' + guest._id + '/evento/' + event).mx__createBtn Ver Evento.
   //- Modal
   section#popup.m-modal
     .m-modal-popup
