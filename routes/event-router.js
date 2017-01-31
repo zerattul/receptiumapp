@@ -21,6 +21,6 @@ router
 	.delete('/events/:event/guests/:_id', gm.remove)
 
 	.get('/events/:event/guests/:_id/confirmar', gm.confirmar)
-	.get('/events/:event/guests/:_id/:event', gm.evento)
+	.get('/events/:event/guests/:_id/evento/:event', gm.evento)
 
 module.exports = router;
