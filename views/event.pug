@@ -1,0 +1,48 @@
+extends layout.pug
+
+block content
+  //- TopBar
+  section.m-section.topBar
+    .m-center
+      .topBar-cont
+        span.mx-cont__user Usuario
+        p.main-search__count Invitados Confirmados 23 / 120
+
+
+  //- Create Event
+  section.m-section
+    .m-center
+      .data
+        .data-col
+          h3.data-col__title Invitados
+          each guest in data 
+            .data-col-guest
+              .data-col-guest-thead
+                .data-col-guest-thead-name
+                  p.data-col-guest-thead__name Nombre
+                .data-col-guest-thead-table
+                  p.data-col-guest-thead__table Mesa
+                .data-col-guest-thead-ent
+                  p.data-col-guest-thead__ent Entradas
+              .data-col-guest-tbody
+                .data-col-guest-tbody-name
+                  p.data-col-guest-tbody__name #{guest.name}
+                .data-col-guest-tbody-table
+                  p.data-col-guest-tbody__table #{guest.table}
+                .data-col-guest-tbody-ent
+                  p.data-col-guest-tbody__ent 0 / #{guest.inv}
+
+
+        .data-col
+          h3.data-col__title Información de la mesa
+          .data-col-guests
+            .data-col-guests-thead
+              .data-col-guests-thead-name
+                p.data-col-guests-thead__name Nombre
+              .data-col-guests-thead-total
+                p.data-col-guests-thead__total Total: 4 / 12
+            .data-col-guests-tbody
+              p.data-col-guests-tbody__name Salvador Carreon
+              p.data-col-guests-tbody__name Salvador Carreon
+              p.data-col-guests-tbody__name Salvador Carreon
+              p.data-col-guests-tbody__name Salvador Carreon

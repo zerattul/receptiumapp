@@ -20,6 +20,7 @@ router
   .put('/events/:event/guests/:_id/actualizar', gm.update)
 	.delete('/events/:event/guests/:_id', gm.remove)
 
-
+	.get('/events/:event/guests/:_id/confirmar', gm.confirmar)
+	.get('/events/:event/guests/:_id/:event', gm.evento)
 
 module.exports = router;

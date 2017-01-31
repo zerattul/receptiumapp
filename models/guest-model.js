@@ -24,8 +24,9 @@ class GuestModel {
 		});
 	}
 
-	update(data, cb) {
-		conn.findOneAndUpdate({_id : data._id}, {$set : {name: data.name, date : data.date}}, (err) => {
+	update(_id, data, cb) {
+		console.log('data update', data);
+		conn.findOneAndUpdate({_id : _id, event : data.event}, {$set : data}, (err) => {
 			if(err) throw err;
 			return cb(null, 'Invitado Actualizado');
 		});
@@ -36,6 +37,26 @@ class GuestModel {
 			if(err) throw err;
 			cb();
 		});
+	}
+
+	confirmar(_id, event, cb){
+		conn.findOneAndUpdate({_id : _id, event : event}, {$set : {confirm : 1}}, (err) => {
+			if(err) throw err;
+			return cb(null, 'Invitado Confirmado');
+		});
+	}
+
+	evento(event, cb) {
+		conn.find({event : event}, (err, docs) => {
+			if(err) throw err;
+			cb(docs);
+		});
+	}
+
+	contar(event, cb){
+	 conn.count({confirm: 1}, function(err, c) {
+      console.log('Numeor de elmentos :' + c);
+    });
 	}
 }
 

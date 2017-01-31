@@ -12,15 +12,16 @@ block content
 		.m-center
 			.createEvent
 				h1.createEvent__title Editar Invitado
-				form(method="post" action="/events/" + event + '/guests/' + data._id + '/actualizar').m-modal-popup-content
+				form(method="post" action="/events/" + data.event + '/guests/' + data._id + '/actualizar').m-modal-popup-content
 					input(type="hidden", name="_method", value="PUT")
-					input(type="hidden", name="_id")
 					.m-modal-popup-content__label Nombre:
-					input(type="text" name="name" placeholder=data.name).mx-modal-popup-content__input
+					input(type="text" name="name" value=data.name placeholder=data.name).mx-modal-popup-content__input
+					.m-modal-popup-content__label Invitados:
+					input(type="text" name="inv" value=data.inv placeholder=data.inv).mx-modal-popup-content__input
 					.m-modal-popup-content__label Mesa:
-					input(type="text" name="table" placeholder=data.table).mx-modal-popup-content__input
+					input(type="text" name="table" value=data.table placeholder=data.table).mx-modal-popup-content__input
 					.m-modal-popup-content__label email:
-					input(type="text" name="email" placeholder=data.email).mx-modal-popup-content__input
+					input(type="text" name="email" value=data.email placeholder=data.email).mx-modal-popup-content__input
 					.m-modal-popup-content__label Teléfono:
-					input(type="text" name="phone" placeholder=data.phone).mx-modal-popup-content__input
+					input(type="text" name="phone" value=data.phone placeholder=data.phone).mx-modal-popup-content__input
 					button.mx__createEvent guardar

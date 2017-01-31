@@ -1,0 +1,38 @@
+extends layout.pug
+
+block content
+  //- TopBar
+  section.m-section.topBar
+    .m-center
+      .topBar-cont
+        span.mx-cont__user Usuario
+        a(href="#").topBar-cont__logout Salir
+
+  //- Main
+  section.m-section
+    .m-center
+      .wrapper
+        h1.createEvent__title Llena los datos con la información correspondiente
+        .main
+          .main-search
+            input(type="text" name="search" placeholder="Buscar").mx__input
+            p.main-search__count Invitados Confirmados 23 / 120
+
+          .main-data
+            table.main-data-table
+              thead.main-data-table-thead
+                th Nombre
+                th Invitados
+                th Mesa
+                th
+                  a(href="#popup").main-data-table-thead__add Agregar
+
+              tbody.main-data-table-tbody
+                each guest in data
+                  tr
+                    td.nombre
+                      p.mx__nombre #{guest.name}
+                    td.col
+                      p.mx__invitados #{guest.inv}
+                    td.col
+                      p.mx__mesa #{guest.table}

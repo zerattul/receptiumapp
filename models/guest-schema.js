@@ -3,11 +3,13 @@
 const mongoose = require('./model'),
 	Schema = mongoose.Schema,
 	GuestSchema = new Schema({
-		name  : String,
-		table : Number,
-		email : String,
-		phone : Number,
-		event : String,
+		name    : String,
+		table   : Number,
+		inv     : Number,
+		email   : String,
+		phone   : Number,
+		event   : String,
+		confirm : {type : Number, default : 0}
 	},
 	{
 		collection : 'guest'
@@ -15,6 +17,3 @@ const mongoose = require('./model'),
 	Guest = mongoose.model('Guest', GuestSchema);
 
 module.exports = Guest;
-
-
-//TODO 1.- Mandar llamar datos
