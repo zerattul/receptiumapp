@@ -95,7 +95,6 @@ update(req, res, next) {
   }
 
 
-
 }
 
 module.exports = GuestController;

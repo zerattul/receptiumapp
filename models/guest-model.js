@@ -52,12 +52,6 @@ class GuestModel {
 			cb(docs);
 		});
 	}
-
-	contar(event, cb){
-	 conn.count({confirm: 1}, function(err, c) {
-      console.log('Numeor de elmentos :' + c);
-    });
-	}
 }
 
 module.exports = GuestModel;
