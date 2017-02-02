@@ -5,18 +5,37 @@ const GuestModel = require('../models/guest-model'),
   gm = new GuestModel();
 
 class GuestController{
-getAll(req, res, next) {
-  let event = req.params.event;
-  return (req.session.username)
-    ? gm.getAll(event, (docs) => {
-      res.render('guest-home', {
-        user :req.session.username,
-        data : docs,
-        event : event,
-      });
+  
+  
+  getAll(req, res, next){
+    let event = req.params.event;
+    return (req.session.username)
+    ? gm.getAll(event, (err, docs)=>{
+      if(docs.length > 0){
+        gm.contar(event, (err, total) => {
+          console.log('err', err);
+          console.log('total', total);
+          return res.render('guest-home',{
+            user :req.session.username,
+            data : docs,
+            event : event,
+            contar : total
+          });
+        });
+      } else {
+        gm.getAll(event, (docs) => {
+          res.render('guest-home', {
+            user :req.session.username,
+            data : docs,
+            event : event,
+            contar : total
+          });
+        })
+      }
     })
-    : errors.http401(req, res, next)
-}
+    : errors.http401(req, res, next);
+  }
+
 
 getOne(req, res, next) {
   console.log('Editar uno')
@@ -93,8 +112,6 @@ update(req, res, next) {
       })
       : errors.http401(req, res, next)
   }
-
-
 }
 
 module.exports = GuestController;

@@ -5,7 +5,7 @@ class GuestModel {
 	getAll(event, cb) {
 		conn.find({event : event}, (err, docs) => {
 			if(err) throw err;
-			cb(docs);
+			cb(null, docs);
 		});
 	}
 
@@ -52,6 +52,13 @@ class GuestModel {
 			cb(docs);
 		});
 	}
+  
+  contar(event, cb) {
+    conn.count({event: event, confirm: 1}, function (err, c) {
+      if(err) throw err;
+      return cb(null, c);
+    });
+  }
 }
 
 module.exports = GuestModel;
