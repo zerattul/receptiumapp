@@ -5,10 +5,12 @@ const GuestModel = require('../models/guest-model'),
   gm = new GuestModel();
 
 class GuestController{
-  
-  
+
+
   getAll(req, res, next){
     let event = req.params.event;
+    let total = 0;
+
     return (req.session.username)
     ? gm.getAll(event, (err, docs)=>{
       if(docs.length > 0){
@@ -21,6 +23,16 @@ class GuestController{
             event : event,
             contar : total
           });
+        });
+      } else if(req.query.search) {
+        gm.buscar(event, (docs) => {
+          console.log('buscar: Buscando....');
+          res.render('guest-home'), {
+            user :req.session.username,
+            data : docs,
+            event : event,
+            contar : total
+          }
         });
       } else {
         gm.getAll(event, (docs) => {
@@ -113,5 +125,6 @@ update(req, res, next) {
       : errors.http401(req, res, next)
   }
 }
+
 
 module.exports = GuestController;

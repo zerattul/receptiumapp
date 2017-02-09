@@ -52,13 +52,27 @@ class GuestModel {
 			cb(docs);
 		});
 	}
-  
+
   contar(event, cb) {
     conn.count({event: event, confirm: 1}, function (err, c) {
       if(err) throw err;
       return cb(null, c);
     });
   }
+
+	buscar(evnt, cb) {
+		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+		conn.find({"name" : regex}, (err, found) => {
+			if(err) throw err;
+			return cb(null, docs);
+		});
+	}
 }
+
+
+function escapeRegex(text){
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+
 
 module.exports = GuestModel;
