@@ -14,7 +14,7 @@ block content
       .wrapper
         h1.createEvent__title Llena los datos con la información correspondiente
         .main
-          form(method="GET" action="/events/" + event + '/guests/' + data._id + '/buscar').main-search
+          form(method="GET" action="/events/" + event + '/guests/').main-search
             input(type="text" name="search" placeholder="Buscar Invitado").mx__input
             //- input(type="submit" value="Buscar")
           p.main-search__count Invitados Confirmados #{ contar } / 120
