@@ -14,8 +14,10 @@ block content
       .wrapper
         h1.createEvent__title Llena los datos con la información correspondiente
         .main
-          .main-search
+          form.main-search(method="post", action="/search/")
+            input(type="hidden", name="_method", value="PUT")
             input(type="text" name="search" placeholder="Buscar").mx__input
+            input.button.buscar(type="submit", value="Enviar")
             p.main-search__count Invitados Confirmados 23 / 120
 
           .main-data

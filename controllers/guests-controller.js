@@ -24,16 +24,6 @@ class GuestController{
             contar : total
           });
         });
-      } else if(req.query.search) {
-        gm.buscar(event, (docs) => {
-          console.log('buscar: Buscando....');
-          res.render('guest-home'), {
-            user :req.session.username,
-            data : docs,
-            event : event,
-            contar : total
-          }
-        });
       } else {
         gm.getAll(event, (docs) => {
           res.render('guest-home', {
@@ -116,13 +106,26 @@ update(req, res, next) {
     let event = req.params.event;
     return (req.session.username)
       ? gm.evento(event, (docs) => {
-        res.render('event', {
+        res.render('/events/' + guest.event + '/guests', {
           user :req.session.username,
           data : docs,
           event : event,
         });
       })
       : errors.http401(req, res, next)
+  }
+
+
+  buscar(req, res, next) {
+    let nombre = req.body._nombre
+    console.log('Nombre a buscar: '+nombre)
+    return gm.findName(nombre, (docs) => {
+      console.log(docs);
+        res.render('/events/' + guest.event + '/guests', {
+            title : docs!=null?'Usuario encontrado':'Usuario no encontrado',
+            data : docs
+        })
+    });
   }
 }
 
