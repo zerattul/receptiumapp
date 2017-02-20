@@ -16,7 +16,7 @@ block content
         .main
           form(method="GET" action="/events/" + event + '/guests/' + data._id + '/buscar').main-search
             input(type="text" name="search" placeholder="Buscar Invitado").mx__input
-            input(type="submit" value="Buscar")
+            //- input(type="submit" value="Buscar")
           p.main-search__count Invitados Confirmados #{ contar } / 120
 
           .main-data
