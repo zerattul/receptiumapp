@@ -21,17 +21,17 @@ block content
 							.createEvent-cont-btns
 								a(href="/events/" + event._id + "/guests").mx-createEvente__event.createEvent-cont-btns__btn #{event.name} / #{event.date}
 								a(href="/events/"+ event._id + "/guests").mx-createEvente__event.createEvent-cont-btns__btn Lista de Invitados
-								//- .m-crud
-								//- 	a.btn(href="/editar/" + event._id).m-crud__edit.icon-pencil
-								//- 	form(method="post", action="/events/" + event._id)
-								//- 		input(type="button", value="X", onclick="eliminar(this)").m-crud__delete.icon-x
-								//- 		input(type="hidden", name="_method", value="delete")
-								//-
-								//- 		script.
-								//- 			function eliminar(input) {
-								//- 				var deleteOk = confirm('¿Estás seguro de eliminar este registro?');
-								//- 				return (deleteOk) ? input.parentNode.submit() : false;
-								//- 			}
+								.m-crud
+									a.btn(href="/editar/" + event._id).m-crud__edit.icon-pencil
+									form(method="post", action="/events/" + event._id)
+										input(type="button", value="X", onclick="eliminar(this)").m-crud__delete.icon-x
+										input(type="hidden", name="_method", value="delete")
+
+										script.
+											function eliminar(input) {
+												var deleteOk = confirm('¿Estás seguro de eliminar este registro?');
+												return (deleteOk) ? input.parentNode.submit() : false;
+											}
 
 	section#popup.m-modal
 		.m-modal-popup
