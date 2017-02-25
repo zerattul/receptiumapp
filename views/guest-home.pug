@@ -29,29 +29,29 @@ block content
                 th
                   a(href="#popup").main-data-table-thead__add Agregar
 
-              tbody.main-data-table-tbody
-                each guest in data
-                  tr
-                    td.confirm
-                      a.btn(href="/events/" + event + '/guests/' + guest._id + '/confirmar').m-crud__edit.icon-pencil
-                    td.nombre
-                      p.mx__nombre #{guest.name}
-                    td.col
-                      p.mx__invitados #{guest.inv}
-                    td.col
-                      p.mx__mesa #{guest.table}
-                    td.colbtn
-                      .colbtn-crud
-                        a.btn(href="/events/" + event + '/guests/' + guest._id + '/editar').m-crud__edit.icon-pencil
-                        form(method="post", action="/events/" + guest.event + "/guests/" + guest._id)
-                          input(type="button", value="X", onclick="eliminar(this)").m-crud__delete.icon-x
-                          input(type="hidden", name="_method", value="DELETE")
-
-                          script.
-                            function eliminar(input) {
-                              var deleteOk = confirm('¿Estás seguro de eliminar este registro?');
-                              return (deleteOk) ? input.parentNode.submit() : false;
-                            }
+              //- tbody.main-data-table-tbody
+              //-   each guest in data
+              //-     tr
+              //-       td.confirm
+              //-         a.btn(href="/events/" + event + '/guests/' + guest._id + '/confirmar').m-crud__edit.icon-pencil
+              //-       td.nombre
+              //-         p.mx__nombre #{guest.name}
+              //-       td.col
+              //-         p.mx__invitados #{guest.inv}
+              //-       td.col
+              //-         p.mx__mesa #{guest.table}
+              //-       td.colbtn
+              //-         .colbtn-crud
+              //-           a.btn(href="/events/" + event + '/guests/' + guest._id + '/editar').m-crud__edit.icon-pencil
+              //-           form(method="post", action="/events/" + guest.event + "/guests/" + guest._id)
+              //-             input(type="button", value="X", onclick="eliminar(this)").m-crud__delete.icon-x
+              //-             input(type="hidden", name="_method", value="DELETE")
+              //-
+              //-             script.
+              //-               function eliminar(input) {
+              //-                 var deleteOk = confirm('¿Estás seguro de eliminar este registro?');
+              //-                 return (deleteOk) ? input.parentNode.submit() : false;
+              //-               }
         //-  a(href="/events/" + event + '/guests/' + guest._id + '/evento/' + event).mx__createBtn Ver Evento.
   //- Modal
   section#popup.m-modal
