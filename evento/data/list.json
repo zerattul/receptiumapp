@@ -1,0 +1,62 @@
+  {
+      "mesas": [
+        {
+          "mesa": "mesa1",
+          "integrantes": [
+            {
+              "nombre": "Salvador Carreon",
+              "mesa" : "1",
+              "entradas" : "3",
+              "usadas" : "0,"
+            },
+            {
+              "nombre": "Ernesto Perez",
+              "mesa" : "1",
+              "entradas" : "2",
+              "usadas" : "0,"
+            },
+            {
+              "nombre": "Pepe el toro",
+              "mesa" : "1",
+              "entradas" : "1",
+              "usadas" : "0,"
+            }
+          ],
+          "mesa1" : [
+            {
+              "invt" : "Salvador"
+            },
+            {
+              "invt" : "juan"
+            }
+
+          ]
+        },
+        {
+          "mesa": "mesa2",
+          "integrantes": [
+            {
+              "nombre": "Daniel Garcia",
+              "mesa" : "2",
+              "entradas" : "3",
+              "usadas" : "0,"
+            },
+            {
+              "nombre": "Oscar Gaytan",
+              "mesa" : "2",
+              "entradas" : "2",
+              "usadas" : "0,"
+            },
+            {
+              "nombre": "Juan de Diosmes",
+              "mesa" : "2",
+              "entradas" : "1",
+              "usadas" : "0,"
+            }
+          ]
+        }
+      ]
+    }
+
+
+  
